@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:movies_app/src/providers/movie_provider.dart';
 import 'package:movies_app/src/widgets/card_swiper_widget.dart';
 
 class HomePage extends StatelessWidget {
@@ -19,13 +20,18 @@ class HomePage extends StatelessWidget {
       ),
       body: Container(
           child: Column(
-        children: [_swiperTarjetas()],
+        children: [_swiperCards()],
       )),
     );
   }
 
-  Widget _swiperTarjetas() {
-    return CardSwiper( 
-      movies: [ 1,2,3,4,5],);
+  Widget _swiperCards() {
+    
+    final movieProvider = new MovieProvider();
+    movieProvider.getMovieCinema();
+
+    return CardSwiper(
+      movies: [1, 2, 3, 4, 5],
+    );
   }
 }
