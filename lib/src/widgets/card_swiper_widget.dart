@@ -25,8 +25,8 @@ class CardSwiper extends StatelessWidget {
             );
         },
         itemCount: movies.length,
-        itemWidth: _screenSize.width * 0.7,
-        itemHeight: _screenSize.height * 0.5,
+        itemWidth: _screenSize.width * 0.5,
+        itemHeight: _screenSize.height * 0.4,
       ),
     );
   }
