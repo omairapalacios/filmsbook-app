@@ -11,7 +11,7 @@ class MovieProvider {
   String _language = 'es-ES';
 
   int _popularsPage = 0;
-
+  bool _loading = false;
   //stream
   List<Movie> _popularsMovies = new List();
 
@@ -44,6 +44,10 @@ class MovieProvider {
   }
 
   Future<List<Movie>> getPopularMovies() async {
+    
+    if (_loading) return [];
+
+    _loading = true;
     _popularsPage++;
 
     final url = Uri.https(_url, '3/movie/popular', {
@@ -57,6 +61,8 @@ class MovieProvider {
     // add movies to stream
     _popularsMovies.addAll(resp);
     popularsSink(_popularsMovies);
+
+    _loading = false;
 
     return resp;
   }
