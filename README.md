@@ -5,12 +5,8 @@ Proyecto Git Init - Comunidad Hackspace.
 ## Temas aprendidos
 
 * Consumo de servicios REST
-
-* Conversión de JSON --> Maps --> Modelos
-
 * PageViews
-
-* Streams
-
+* Manejo de data con Streams
+* Creación de Widgets personalizados
 * Infinite Horizontal Scroll
 * SearchDelegate
