@@ -5,10 +5,14 @@ import 'package:movies_app/src/widgets/card_swiper_widget.dart';
 import 'package:movies_app/src/widgets/movie_horizontal.dart';
 
 class HomePage extends StatelessWidget {
+
   final movieProvider = new MovieProvider();
 
   @override
   Widget build(BuildContext context) {
+
+    movieProvider.getPopularMovies();
+
     return Scaffold(
         appBar: AppBar(
           title: Text('MovieBook'),
@@ -58,12 +62,14 @@ class HomePage extends StatelessWidget {
             ),
           ),
           SizedBox(height: 10.0),
-          FutureBuilder(
-            future: movieProvider.getPopularMovies(),
-            initialData: [],
+          StreamBuilder(
+            stream: movieProvider.popularsStream,
             builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
               if (snapshot.hasData) {
-                return MovieHorizontal(movies: snapshot.data);
+                return MovieHorizontal(
+                  movies: snapshot.data,
+                  goToTheNextPage: movieProvider.getPopularMovies,
+                  );
               } else {
                 return Center(child: CircularProgressIndicator());
               }
