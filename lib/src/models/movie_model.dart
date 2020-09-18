@@ -70,7 +70,15 @@ class Movie {
     if (posterPath == null) {
       return 'https://cdn11.bigcommerce.com/s-lhibl/stencil/0f397120-088c-0137-97c6-00b93c38be4d/icons/icon-no-image.svg';
     } else {
-      return 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/$posterPath';
+      return 'https://image.tmdb.org/t/p/w500/$posterPath';
+    } 
+  }
+
+  getBackdropImage() {
+    if (backdropPath == null) {
+      return 'https://cdn11.bigcommerce.com/s-lhibl/stencil/0f397120-088c-0137-97c6-00b93c38be4d/icons/icon-no-image.svg';
+    } else {
+      return 'https://image.tmdb.org/t/p/w500/$backdropPath';
     } 
   }
 }

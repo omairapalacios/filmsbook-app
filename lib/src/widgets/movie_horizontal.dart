@@ -31,13 +31,11 @@ class MovieHorizontal extends StatelessWidget {
             pageSnapping: false,
             controller: _pageController,
             itemCount: movies.length,
-            itemBuilder: (context, i) => _card(context, movies[i])
-        )
-    );
+            itemBuilder: (context, i) => _card(context, movies[i])));
   }
 
   Widget _card(context, Movie movie) {
-    return Container(
+    final cardMovie = Container(
       margin: EdgeInsets.only(right: 15.0),
       child: Column(
         children: [
@@ -61,9 +59,18 @@ class MovieHorizontal extends StatelessWidget {
         ],
       ),
     );
+
+    return GestureDetector(
+      child: cardMovie,
+      onTap: () {
+        Navigator.pushNamed(context, 'detail', arguments: movie);
+      },
+    );
   }
 
-  List<Widget> _cardsPopulars(context) {
+// other way of get data
+
+/*  List<Widget> _cardsPopulars(context) {
     return movies.map((movie) {
       return Container(
         margin: EdgeInsets.only(right: 15.0),
@@ -90,5 +97,5 @@ class MovieHorizontal extends StatelessWidget {
         ),
       );
     }).toList();
-  }
+  } */
 }
