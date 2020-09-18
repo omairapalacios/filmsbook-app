@@ -9,43 +9,59 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('MovieBook'),
-        backgroundColor: Colors.black87,
-        actions: [
-          IconButton(
-            icon: Icon(Icons.search),
-            onPressed: () {},
-          )
-        ],
-      ),
-      body: Container(
+        appBar: AppBar(
+          title: Text('MovieBook'),
+          backgroundColor: Colors.black87,
+          actions: [
+            IconButton(
+              icon: Icon(Icons.search),
+              onPressed: () {},
+            )
+          ],
+        ),
+        body: Container(
           child: Column(
-        children: [_swiperCards()],
-      )),
-    );
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [_swiperCards(), _footer(context)],
+          ),
+        ));
   }
 
   Widget _swiperCards() {
-    movieProvider.getMovieCinema();
+    movieProvider.getMoviesCinema();
 
     return FutureBuilder(
-      future: movieProvider.getMovieCinema(),
+      future: movieProvider.getMoviesCinema(),
       builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
-        
-        if( snapshot.hasData ) {
-          return CardSwiper(
-          movies: snapshot.data
-          );
+        if (snapshot.hasData) {
+          return CardSwiper(movies: snapshot.data);
         } else {
           return Container(
-            height: 400.0,
-            child: Center(
-              child: CircularProgressIndicator()
-            )
-          );
+              height: 400.0, child: Center(child: CircularProgressIndicator()));
         }
       },
+    );
+  }
+
+  Widget _footer(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      child: Column(
+        children: [
+          Text(
+            'Populares',
+            style: Theme.of(context).textTheme.subtitle1,
+          ),
+          FutureBuilder(
+            future: movieProvider.getPopularMovies(),
+            initialData: [],
+            builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+
+              return Text('Holi');
+            },
+          ),
+        ],
+      ),
     );
   }
 }
