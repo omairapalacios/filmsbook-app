@@ -11,11 +11,20 @@ class MovieDetail extends StatelessWidget {
       body: CustomScrollView(
         slivers: [
           _createAppbar(movie),
+          SliverList(
+            delegate: SliverChildListDelegate(
+              [
+                SizedBox( height: 10.0),
+                _posterTitle( context, movie ),
+  
+              ]
+            )
+          )
         ],
       )
     );
   }
-
+                  
   Widget _createAppbar(Movie movie) {
     return SliverAppBar(
       elevation: 2.0,
@@ -37,6 +46,33 @@ class MovieDetail extends StatelessWidget {
           fadeInDuration: Duration(milliseconds: 150),
           fit: BoxFit.cover,
         ),
+      ),
+    );
+  }
+                  
+  Widget _posterTitle(context, Movie movie) {
+
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 20.0),
+      child: Row(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(8.0),
+            child: Image(
+              image:  NetworkImage( movie.getPosterImage()),
+              height: 150.0,
+            ),
+          ),
+          SizedBox(width: 25.0),
+          Flexible(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+              Text( movie.title, style: Theme.of(context).textTheme.headline6, overflow: TextOverflow.ellipsis),
+              Text( movie.originalTitle, style: Theme.of(context).textTheme.subtitle1, overflow: TextOverflow.ellipsis)
+            ],),
+          )
+        ],
       ),
     );
   }
