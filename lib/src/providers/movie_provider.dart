@@ -2,14 +2,14 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-
 import 'package:movies_app/src/models/movie_model.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class MovieProvider {
-  String _apikey = 'c088b6b129a0132a0a215a05a106d260';
+  String _apikey = DotEnv().env['API_MOVIEDB_KEY'];
   String _url = 'api.themoviedb.org';
   String _language = 'es-ES';
-
+  
   int _popularsPage = 0;
   bool _loading = false;
   //stream
@@ -39,12 +39,11 @@ class MovieProvider {
   Future<List<Movie>> getMoviesCinema() async {
     final url = Uri.https(_url, '3/movie/now_playing',
         {'api_key': _apikey, 'language': _language});
-
+    print(_apikey);
     return await _processResult(url);
   }
 
   Future<List<Movie>> getPopularMovies() async {
-    
     if (_loading) return [];
 
     _loading = true;

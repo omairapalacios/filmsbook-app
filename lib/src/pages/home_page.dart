@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
         appBar: AppBar(
-          title: Text('MovieBook'),
+          title: Text('Films Book'),
           backgroundColor: Colors.black87,
           actions: [
             IconButton(
@@ -25,6 +25,7 @@ class HomePage extends StatelessWidget {
           ],
         ),
         body: Container(
+          
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [_swiperCards(), _footer(context)],
