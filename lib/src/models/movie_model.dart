@@ -68,7 +68,7 @@ class Movie {
 
   getPosterImage() {
     if (posterPath == null) {
-      return 'https://cdn11.bigcommerce.com/s-lhibl/stencil/0f397120-088c-0137-97c6-00b93c38be4d/icons/icon-no-image.svg';
+      return 'https://firebasestorage.googleapis.com/v0/b/flutter-apps-86cfe.appspot.com/o/no-image.jpg?alt=media&token=276d0ea8-891e-4e09-9cb6-1dd97e75d891';
     } else {
       return 'https://image.tmdb.org/t/p/w500/$posterPath';
     } 
@@ -76,7 +76,7 @@ class Movie {
 
   getBackdropImage() {
     if (backdropPath == null) {
-      return 'https://cdn11.bigcommerce.com/s-lhibl/stencil/0f397120-088c-0137-97c6-00b93c38be4d/icons/icon-no-image.svg';
+      return 'https://firebasestorage.googleapis.com/v0/b/flutter-apps-86cfe.appspot.com/o/no-image.jpg?alt=media&token=276d0ea8-891e-4e09-9cb6-1dd97e75d891';
     } else {
       return 'https://image.tmdb.org/t/p/w500/$backdropPath';
     } 
