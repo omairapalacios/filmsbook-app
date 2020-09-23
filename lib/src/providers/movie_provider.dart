@@ -40,7 +40,7 @@ class MovieProvider {
   Future<List<Movie>> getMoviesCinema() async {
     final url = Uri.https(_url, '3/movie/now_playing',
         {'api_key': _apikey, 'language': _language});
-    print(_apikey);
+
     return await _processResult(url);
   }
 
@@ -77,5 +77,15 @@ class MovieProvider {
     final decodedData = json.decode(resp.body);
     final cast = new Cast.fromJsonList(decodedData['cast']);
     return cast.actors;
+  }
+
+  Future<List<Movie>> searchMovie(String query) async {
+    final url = Uri.https(_url, '3/search/movie', {
+      'api_key': _apikey,
+      'language': _language,
+      'query': query,
+    });
+
+    return await _processResult(url);
   }
 }

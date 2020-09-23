@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 
 import 'package:movies_app/src/providers/movie_provider.dart';
+import 'package:movies_app/src/search/search_delegate.dart';
 import 'package:movies_app/src/widgets/card_swiper_widget.dart';
 import 'package:movies_app/src/widgets/movie_horizontal.dart';
 
 class HomePage extends StatelessWidget {
-
   final movieProvider = new MovieProvider();
 
   @override
   Widget build(BuildContext context) {
-
     movieProvider.getPopularMovies();
 
     return Scaffold(
@@ -20,12 +19,13 @@ class HomePage extends StatelessWidget {
           actions: [
             IconButton(
               icon: Icon(Icons.search),
-              onPressed: () {},
+              onPressed: () {
+                showSearch(context: context, delegate: DataSearch());
+              },
             )
           ],
         ),
         body: Container(
-          
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [_swiperCards(), _footer(context)],
@@ -70,7 +70,7 @@ class HomePage extends StatelessWidget {
                 return MovieHorizontal(
                   movies: snapshot.data,
                   goToTheNextPage: movieProvider.getPopularMovies,
-                  );
+                );
               } else {
                 return Center(child: CircularProgressIndicator());
               }
