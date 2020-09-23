@@ -17,6 +17,9 @@ class Movies {
 }
 
 class Movie {
+  
+  String uniqueId;
+
   int voteCount;
   int id;
   bool video;
@@ -71,7 +74,7 @@ class Movie {
       return 'https://firebasestorage.googleapis.com/v0/b/flutter-apps-86cfe.appspot.com/o/no-image.jpg?alt=media&token=276d0ea8-891e-4e09-9cb6-1dd97e75d891';
     } else {
       return 'https://image.tmdb.org/t/p/w500/$posterPath';
-    } 
+    }
   }
 
   getBackdropImage() {
@@ -79,6 +82,6 @@ class Movie {
       return 'https://firebasestorage.googleapis.com/v0/b/flutter-apps-86cfe.appspot.com/o/no-image.jpg?alt=media&token=276d0ea8-891e-4e09-9cb6-1dd97e75d891';
     } else {
       return 'https://image.tmdb.org/t/p/w500/$backdropPath';
-    } 
+    }
   }
 }
