@@ -18,12 +18,12 @@ Encuentra el resumen de tus peliculas favoritas, nuevos estrenos, y descubre si 
 ## Demo: 
 
 <div align="center" style="margin-bottom:30px">
-  <img src="assets/images/screen-1-min.png" width="200" style="margin-right:100px" title="hover text">
-  <img src="assets/images/screen-2-min.png" width="200" title="hover text">
+  <img src="assets/images/screen-1-min.png" width="250" title="hover text">
+  <img src="assets/images/screen-2-min.png" width="250" title="hover text">
 </div>
 
 <div align="center" style="margin-bottom:30px">
-  <img src="assets/images/screen-3-min.png" width="250" style="margin-right:50px" title="hover text">
+  <img src="assets/images/screen-3-min.png" width="250" title="hover text">
   <img src="assets/images/screen-4-min.png" width="250" title="hover text">
 </div>
 
