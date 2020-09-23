@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:google_fonts/google_fonts.dart';
 import 'package:movies_app/src/providers/movie_provider.dart';
 import 'package:movies_app/src/search/search_delegate.dart';
 import 'package:movies_app/src/widgets/card_swiper_widget.dart';
@@ -14,7 +15,8 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
         appBar: AppBar(
-          title: Text('Films Book'),
+          leading: Image.asset('assets/images/logo.png'),
+          title: Text('Films Book', style: GoogleFonts.schoolbell()),
           backgroundColor: Colors.black87,
           actions: [
             IconButton(
@@ -30,6 +32,7 @@ class HomePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [_swiperCards(), _footer(context)],
           ),
+          
         ));
   }
 
